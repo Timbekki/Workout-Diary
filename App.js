@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { PaperProvider } from 'react-native-paper';
+import Context from './components/Context';
+import BottomNavTheme from './styles/BottomNavTheme';
+import BottomNavigator from './components/BottomNavigator';
 
 export default function App() {
+
+  
+  const [exe, setExe] = useState([]); 
+  const [isMiles, setIsMiles] = useState(false); 
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider theme={BottomNavTheme}>
+      <Context.Provider value={{ exe, setExe, isMiles, setIsMiles }}>
+        <BottomNavigator />
+      </Context.Provider>
+    </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
